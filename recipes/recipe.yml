@@ -7,7 +7,7 @@ description: "Custom uCore image with Btrfs and extras"
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/ucore-hci
-image-version: latest # latest is also supported if you want new updates ASAP
+image-version: stable # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -48,5 +48,6 @@ modules:
       - |
         set -euo pipefail
         git clone https://github.com/automorphism88/snapraid-btrfs.git /tmp/snapraid-btrfs && \
-        install -m 0755 /tmp/snapraid-btrfs/snapraid-btrfs /usr/local/bin/snapraid-btrfs
+        install -m 0755 /tmp/snapraid-btrfs/snapraid-btrfs /usr/bin/snapraid-btrfs
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
