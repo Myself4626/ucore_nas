@@ -44,10 +44,15 @@ modules:
         - realtek-firmware
         - tiwilink-firmware
   - type: script
-    snippets:
-      - |
-        set -euo pipefail
-        curl -sSL https://raw.githubusercontent.com/automorphism88/snapraid-btrfs/master/snapraid-btrfs -o /usr/bin/snapraid-btrfs
-        chmod +x /usr/bin/snapraid-btrfs
+    scripts:
+      - snapraid-btrfs.sh
+      - age-sops.sh
+      - cockpit.sh
+
+  - type: kargs
+    arch: x86_64 # only inject kernel arguments to these specific OS architectures
+    kargs:
+      - rootflags=noatime
+      - rootflags=compress=zstd:3
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
