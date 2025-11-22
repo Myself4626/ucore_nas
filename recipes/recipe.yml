@@ -7,7 +7,7 @@ description: "Custom uCore image with Btrfs and extras"
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/ucore-hci
-image-version: stable # latest is also supported if you want new updates ASAP
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -43,16 +43,10 @@ modules:
         - nxpwireless-firmware
         - realtek-firmware
         - tiwilink-firmware
-
   - type: script
     snippets:
       - |
         set -euo pipefail
         git clone https://github.com/automorphism88/snapraid-btrfs.git /tmp/snapraid-btrfs && \
         install -m 0755 /tmp/snapraid-btrfs/snapraid-btrfs /usr/local/bin/snapraid-btrfs
-
-- type: kargs
-  kargs:
-    - "rootflags=compress=zstd:3"
-
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
