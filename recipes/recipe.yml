@@ -43,11 +43,5 @@ modules:
         - nxpwireless-firmware
         - realtek-firmware
         - tiwilink-firmware
-  - type: script
-    snippets:
-      - |
-        set -euo pipefail
-        git clone https://github.com/automorphism88/snapraid-btrfs.git /tmp/snapraid-btrfs && \
-        install -m 0755 /tmp/snapraid-btrfs/snapraid-btrfs /usr/bin/snapraid-btrfs
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
