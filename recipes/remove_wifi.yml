@@ -1,0 +1,32 @@
+---
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - type: dnf
+    remove:
+      packages:
+        - atheros-firmware
+        - brcmfmac-firmware
+        - iwlegacy-firmware
+        - iwlwifi-dvm-firmware
+        - iwlwifi-mvm-firmware
+        - mt7xxx-firmware
+        - nxpwireless-firmware
+        - realtek-firmware
+        - tiwilink-firmware
+        - NetworkManager-wifi
+        - wpa_supplicant
+        - iw
+        - wireless-regdb
+        # Mobile device support packages
+        - ModemManager-glib
+        - libimobiledevice
+        - libimobiledevice-glue
+        - usbmuxd
+#        - libgudev
+        # Additional wireless and Bluetooth packages
+#        - bluez-libs
+        # NetworkManager mobile broadband
+        - NetworkManager-cloud-setup
+        - NetworkManager-team
+        - NetworkManager-tui

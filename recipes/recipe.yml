@@ -18,12 +18,9 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
-#    repos:
-#      copr:
-#        - atim/starship
     install:
       packages:
-        - tmux 
+        - tmux
         - ansible
         - snapper
         - powertop
@@ -32,17 +29,9 @@ modules:
         - unzip
         - htop
         - intel_gpu_top
-    remove:
-      packages:
-        - atheros-firmware
-        - brcmfmac-firmware
-        - iwlegacy-firmware
-        - iwlwifi-dvm-firmware
-        - iwlwifi-mvm-firmware
-        - mt7xxx-firmware
-        - nxpwireless-firmware
-        - realtek-firmware
-        - tiwilink-firmware
+
+  - from-file: remove_wifi.yml
+  
   - type: script
     scripts:
       - snapraid-btrfs.sh
